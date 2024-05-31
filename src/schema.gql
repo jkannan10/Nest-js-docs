@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Settings {
+  employeeId: Int!
+  receiveNotification: Boolean!
+  receiveEmails: Boolean!
+}
+
+type Employee {
+  id: Int!
+  firstName: String!
+  lastName: String
+  salary: Int!
+  settings: Settings
+}
+
+type Query {
+  getEmployeeByID(id: Int!): Employee
+  getAllEmployees: [Employee!]!
+  getSettingsByID(id: Int!): Settings!
+  getSettings: [Settings!]!
+}
+
+type Mutation {
+  createEmployee(createEmployeeData: EmployeeDto!): Employee!
+  updateEmployee(id: Int!, employeeData: EmployeeDto!): Employee!
+  deleteEmployee(id: Int!): Boolean
+  createSettings(createSettingsData: SettingsDto!): Settings!
+  updateSettings(id: Int!, settingsDto: SettingsDto!): Settings
+  deleteSettings(id: Int!): Boolean
+}
+
+input EmployeeDto {
+  firstName: String
+  lastName: String
+  salary: Int
+  settings: SettingsDto
+}
+
+input SettingsDto {
+  employeeId: Int
+  receiveNotification: Boolean! = false
+  receiveEmails: Boolean! = false
+}
